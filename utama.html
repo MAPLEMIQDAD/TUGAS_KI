@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RC4 Enkripsi Dekripsi</title>
+    <link rel="stylesheet" type="text/css" href="design.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
+</head>
+<body>
+    <h2>RC4 Enkripsi Dekripsi</h2>
+    <label>Masukkan Teks:</label><br>
+    <textarea id="inputText" rows="4" cols="50"></textarea><br>
+    <label>Masukkan Kunci:</label><br>
+    <input type="text" id="key"><br>
+    <button onclick="encrypt()">Enkripsi</button>
+    <button onclick="decrypt()">Dekripsi</button><br>
+    <label>Hasil:</label><br>
+    <textarea id="output" rows="4" cols="50"></textarea>
+
+    <script>
+        function encrypt() {
+            var plaintext = document.getElementById('inputText').value;
+            var key = document.getElementById('key').value;
+            var encrypted = CryptoJS.RC4.encrypt(plaintext, key).toString();
+            document.getElementById('output').value = encrypted;
+        }
+
+        function decrypt() {
+            var ciphertext = document.getElementById('inputText').value;
+            var key = document.getElementById('key').value;
+            var decrypted = CryptoJS.RC4.decrypt(ciphertext, key).toString(CryptoJS.enc.Utf8);
+            document.getElementById('output').value = decrypted;
+        }
+    </script>
+</body>
+</html>
